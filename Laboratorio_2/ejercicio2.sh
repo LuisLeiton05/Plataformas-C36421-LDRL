@@ -12,16 +12,18 @@ elif pgrep "$nom_proceso" > /dev/null 2>&1 ; then
 
     # Creamos una funcion que nos imprima la informacion.
     revisar_proceso() {
-
-        while [] ; do
+        id=$( pgrep "$nom_proceso" )
+        estado_proceso=$(ps -p "$id" -f -l | tail -n +2 | awk '{print $2}')
+        while [ -n "$inom_proceso" ] && [-n "$comando" ]; do
 
             # Estructura de condiciones para revisar.
-            if [] ; then 
-
-
+            if [ "$estado_proceso" = "T" ] ; then 
+                # Levantar el proceso con el comando.
+                $comando &
+                echo "El proceso estaba inactivo, por lo que fue levantado."
+                
             else
-
-
+                echo "El proceso se encuentra activo."
             fi
 
         done
