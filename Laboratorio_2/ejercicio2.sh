@@ -5,23 +5,22 @@ nom_proceso=$1
 comando=$2
 
 # Verficar que se pasan los parametros y que son correctos.
-if [ -z "$nom_proceso" ] && [ -z "$comando" ] ; then 
+if [ -z "$nom_proceso" ] || [ -z "$comando" ] ; then 
     echo "Proporcione tanto el nombre como el comando del proceso."
     exit 1
 elif pgrep "$nom_proceso" > /dev/null 2>&1 ; then  
 
     # Creamos una funcion que nos imprima la informacion.
     revisar_proceso() {
-        id=$( pgrep -o "$nom_proceso" ) # Se usa -o para obtener solo el id del mas reciente.
-        # Revisar si se encontraron id.
-        if [ -z "$id" ]; then
-            echo "No se encontró ningún proceso con el nombre proporcionado."
-            exit 1
-        fi
-        estado_proceso=$(ps -p "$id" -f -l | tail -n +2 | awk '{print $2}')
-
         # Revisar periodicamente el proceso.
-        while [ -n "$nom_proceso" ] && [ -n "$comando" ]; do
+        while true ; do
+            id=$( pgrep -o "$nom_proceso" ) # Se usa -o para obtener solo el id del mas reciente.
+            # Revisar si se encontraron id.
+            if [ -z "$id" ]; then
+                echo "No se encontró ningún proceso con el nombre proporcionado."
+                exit 1
+            fi
+            estado_proceso=$(ps -p "$id" -f -l | tail -n +2 | awk '{print $2}')
 
             # Estructura de condiciones para revisar.
             if [ "$estado_proceso" = "T" ] ; then 
@@ -33,6 +32,8 @@ elif pgrep "$nom_proceso" > /dev/null 2>&1 ; then
                 echo "El proceso se encuentra activo."
             fi
 
+            # Esperar 20 segundos antes de hacer la segunda verificacion.
+            sleep 20
         done
         
     }
