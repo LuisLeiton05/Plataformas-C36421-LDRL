@@ -25,7 +25,7 @@ elif pgrep "$nom_proceso" > /dev/null 2>&1 ; then
             # Estructura de condiciones para revisar.
             if [ "$estado_proceso" = "T" ] ; then 
                 # Levantar el proceso con el comando.
-                $comando &
+                $comando & 
                 echo "El proceso estaba inactivo, por lo que fue levantado."
 
             else
