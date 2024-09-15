@@ -28,7 +28,7 @@ elif ps -p "$id" > /dev/null 2>&1 ; then
                 break
             else
                 # Logica para que se registre con fecha y hora, en el .log.
-                fecha=$(date "+%Y-%m-%d %H:%M:%S %S") #Le anadi una columna con los segundos para graficar mejor.
+                fecha=$(date "+%Y-%m-%d %H:%M:%S %S") #Le anadi una columna con los segundos para graficar mejor.cod
                 mem_cpu=$( ps -p 3707 -o %mem,%cpu | tail -n +2 )
                 echo "$fecha  $mem_cpu" >> "registro.log"
 
