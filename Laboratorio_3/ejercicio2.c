@@ -4,7 +4,11 @@ int factorial (int n) {
     int i =1 ;
     while ( n > 1) {
         i = i * n;
-        int n = n - 1;
+        n = n - 1; /*
+                    *Hay que quitarle el int, ya que sino se interpreta 
+                    *como una nueva variable por lo que no modificaria a 
+                    *la original. 
+                    */
     }
 
     return i;
