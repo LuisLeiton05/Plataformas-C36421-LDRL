@@ -19,5 +19,12 @@ int main (int argc, char *argv[]) {
     int fac5 = factorial(5);
     printf("4! = %d , 5! = %d \n", fac4, fac5);
 
+    // Se pide un numero a calcularle el factorial.
+    int numero ;
+    printf("Ingrese el numero al que le desee calcualar el factorial: \n") ;
+    scanf("%d", &numero) ;
+    printf("\n") ;
+    printf("El factorial del %d es: %d \n", numero, factorial(numero)) ;
+
     return 0;
 }
