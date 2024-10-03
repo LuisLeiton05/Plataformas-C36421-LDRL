@@ -1,6 +1,8 @@
 #include<stdio.h>
 // Agregamos stdlib para poder usar rand.
 #include<stdlib.h>
+// Agregamos time para lograr que los valores de rand() cambien cada vez que se ejecuta.
+#include<time.h>
 
 #define SIZE 5
 
@@ -48,12 +50,15 @@ int main (){
     printf("EL tamano de la secuencia de 1s mas grande es: %d (ejemplo) \n", largestLine) ;
     printf("\n");
 
+    // Utilizamos la funcion srand() con time(0) para que el valor cambie cada segundo.
+    srand(time(0)) ;
+
     // Utilizando rand creamos, y rellenamos una matriz binaria y cuadrada.
-    int numero = (rand() %7) +5; // Cambiando ese valor sumando, cambia la matriz.
+    int numero = (rand() %7) +1; // %7 y el +1 indica que los valores van a ir de 1 a 7.
     int filas = numero ;
     int columnas = numero ;
 
-    // Declaramos la matriz (max 5x5, pero puede cambiarse), rellenamos e imrpimimos.
+    // Declaramos la matriz, rellenamos e imprimimos.
     int matriz [filas][columnas];
 
     for (int i = 0; i < filas; i++) {
