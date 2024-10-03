@@ -1,4 +1,6 @@
 #include<stdio.h>
+// Agregamos stdlib para poder usar rand.
+#include<stdlib.h>
 
 #define SIZE 5
 
@@ -43,8 +45,38 @@ int main (){
     };
 
     int largestLine = findLargestLine(matrix);
-    printf("EL tamano de la secuencia de 1s mas grande es: %d \n", largestLine) ;
+    printf("EL tamano de la secuencia de 1s mas grande es: %d (ejemplo) \n", largestLine) ;
+    printf("\n");
 
+    // Utilizando rand creamos, y rellenamos una matriz binaria y cuadrada.
+    int numero = (rand() %7) +5; // Cambiando ese valor sumando, cambia la matriz.
+    int filas = numero ;
+    int columnas = numero ;
+
+    // Declaramos la matriz (max 5x5, pero puede cambiarse), rellenamos e imrpimimos.
+    int matriz [filas][columnas];
+
+    for (int i = 0; i < filas; i++) {
+        for (int j = 0; j < columnas; j++) {
+            matriz[i][j] = (rand() %2) ; // %2 le da numero enteros entre 0 y 1, es decir hace una matriz binaria.
+        }
+
+    }
+
+    printf("La matriz a usar es: \n") ;
+    for (int i = 0; i < filas; i++) {
+        for (int j = 0; j < columnas; j++) {
+            printf("%d ", matriz[i][j]) ;
+        }
+        printf("\n");  
+
+    }
+
+    printf("\n");
+
+    // Hacemos el conteo para esta nueva matriz.
+     int largestLine2 = findLargestLine(matriz);
+    printf("EL tamano de la secuencia de 1s mas grande en esta nueva matriz es: %d \n ", largestLine2) ;
     return 0;
 }
 
