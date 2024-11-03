@@ -1,6 +1,7 @@
 #include <stdio.h>
 
-
+/* Hay que desarollar esa lógica.
+*/
 
 
 void findlargestLine (int **matrix, int size, int *result) {
