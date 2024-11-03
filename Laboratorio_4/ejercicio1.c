@@ -1,14 +1,33 @@
 #include <stdio.h>
-
-/* Hay que desarollar esa lógica
-*/
-
+#include <stdlib.h>
 
 void findlargestLine (int **matrix, int size, int *result) {
+    int contador = 0 ;
+    int contador_max = 0 ;
+    
+    for (int i = 0; i < size; i++) {
+        for (int j = 0; j < size; j++) {
+            if (*(*(matrix + i ) + j ) == 1){
+                contador++ ; // Si es 1 lo incrementa en 1. 
+            } else {
+                if (contador > contador_max){
+                    contador_max = contador ;// Vamor actualizando cada vez que sea 0.
+                }
 
+                // Necesitamos reiniciar el contador para la siguiente iteracion.
+                contador = 0 ;
+                }
 
+            }
+
+        }
+        // Necesitamos verficar si la ultima iteracion es la mayor.
+        if (contador > contador_max){
+            contador_max = contador ;
+        }
+
+    *result = contador_max ; 
 }
-
 
 
 
