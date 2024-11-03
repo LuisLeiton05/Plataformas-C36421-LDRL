@@ -51,9 +51,14 @@ void allocateMatrix (int ***matrix, int size) {
     }
 }       
 
-// Rellena nuestra matriz con 1 y 0.
+// Rellena nuestra matriz con 1s y 0s.
 void fillMatrix (int **matrix, int size) {
 
+    for (int i = 0; i < size; i++) {
+        for (int j = 0; j < size; j++) {
+            *(*(matrix + i ) + j ) = (rand() %2) ; // %2 le da numero enteros entre 0 y 1, es decir hace una matriz binaria.
+        }
+    }
 }
 
 
