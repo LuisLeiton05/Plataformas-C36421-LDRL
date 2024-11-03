@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-/* Hay que desarollar esa lógica.
+/* Hay que desarollar esa lógica
 */
 
 
