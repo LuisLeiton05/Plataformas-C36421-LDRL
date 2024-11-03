@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+// Cuenta las filas de 1s.
 void findlargestLine (int **matrix, int size, int *result) {
     int contador = 0 ;
     int contador_max = 0 ;
@@ -29,15 +30,28 @@ void findlargestLine (int **matrix, int size, int *result) {
     *result = contador_max ; 
 }
 
-
-
+// Reserva, en memoria dinámica, el espacio para nuestra matriz.
 void allocateMatrix (int ***matrix, int size) {
+    // (int **) es para reservar memoria a un arreglo de punteros, varios de ellos.
+    *matrix = (int **)malloc(size * sizeof(int))
+    // Caso en el que no encontró espacio.
+    if (*matrix == NULL) {
+        printf("Error: No se pudo asignar la memoria para la matriz. \n")
+        return ;
+    }
 
-}
+    // Reservamos la memoria para cada una de las fila.
+    for (int i = 0; i < size; i++) {
+        (*matrix)[i] = (int *)malloc(size * sizeof(int));
+        // Caso en el que no encuentra espacio.
+        if ( (*matrix)[i] == NULL) {
+        printf("Error: No se pudo asignar la memoria para alguna fila de la matriz. \n")
+        return 1 ;
+        }
+    }
+}       
 
-
-
-
+// Rellena nuestra matriz con 1 y 0.
 void fillMatrix (int **matrix, int size) {
 
 }
