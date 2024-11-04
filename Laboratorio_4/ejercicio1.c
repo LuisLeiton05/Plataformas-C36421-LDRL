@@ -33,10 +33,10 @@ void findlargestLine (int **matrix, int size, int *result) {
 // Reserva, en memoria dinámica, el espacio para nuestra matriz.
 void allocateMatrix (int ***matrix, int size) {
     // (int **) es para reservar memoria a un arreglo de punteros, varios de ellos.
-    *matrix = (int **)malloc(size * sizeof(int))
+    *matrix = (int **)malloc(size * sizeof(int)) ;
     // Caso en el que no encontró espacio.
     if (*matrix == NULL) {
-        printf("Error: No se pudo asignar la memoria para la matriz. \n")
+        printf("Error: No se pudo asignar la memoria para la matriz. \n") ;
         return ;
     }
 
@@ -45,8 +45,8 @@ void allocateMatrix (int ***matrix, int size) {
         (*matrix)[i] = (int *)malloc(size * sizeof(int));
         // Caso en el que no encuentra espacio.
         if ( (*matrix)[i] == NULL) {
-        printf("Error: No se pudo asignar la memoria para alguna fila de la matriz. \n")
-        return 1 ;
+        printf("Error: No se pudo asignar la memoria para alguna fila de la matriz. \n") ;
+        return ;
         }
     }
 }       
@@ -63,12 +63,12 @@ void fillMatrix (int **matrix, int size) {
 
 
 
-
+// Imprimir nuestra matriz binaria.
 void printMatrix (int **matrix, int size) {
     printf("Matrix (%dx%d): \n", size, size);
-    for (int i = 0; i < size;  j++){
+    for (int i = 0; i < size;  i++){
         for (int j = 0; j < size; j++){
-            pritnf("%d ", *(*(matrix + i) + j));
+            printf("%d ", *(*(matrix + i) + j));
         }
         printf("\n");
     }
@@ -76,25 +76,51 @@ void printMatrix (int **matrix, int size) {
 
 
 
-
-void freeMatrix (int ∗∗matrix , int size ) {
+// Liberar memoria asignada previamente.
+void freeMatrix (int **matrix , int size ) {
     for (int i = 0 ; i < size ; i ++) {
         free (matrix[i]);
     }
     free(matrix);
 }
 
+// Función de la matriz transpuesta.
+void transpuestaMatrix (int **matrix, int size, int *** transpuesta) {
+    // Reservamos el espacio de esta nueva matriz.
+    allocateMatrix(transpuesta, size) ;
+
+    // Recorrerla y transponer a la anterior.
+    for (int i = 0; i < size;  i++){
+        for (int j = 0; j < size; j++){
+        *(*(transpuesta + j) + i) = *(*(matrix + i) + j) ;
+        }
+    }
+}
+
 int main() {
-    int size, largestLine;
+    int size, largestLine1, largestline2 ;
     int **matrix = NULL;
 
+    printf("Ingrese un número para definir el tamaño de la matriz: \n") ;
+    scanf("%d", &size) ;
+
     
+    allocateMatrix(&matrix, size) ;
+    fillMatrix(matrix,size) ;
+    printf("La matriz original es: \n");
+    printMatrix(matrix, size) ;
+    findlargestLine(matrix, size, &largestLine1);
+    printf("El tamaño de la secuencia de 1s más grande es: %d\n", largestLine1);
 
-    findlargestLine(matrix, size, &largestLine);
+    // Lógica para la matriz transpuesta.
+    int **transpuesta = NULL ;
+    printf("La matriz transpuesta es: \n");
+    printMatrix(transpuesta, size);
+    findlargestLine(transpuesta, size, &largestline2);
+    printf("El tamaño de la secuencia de 1s más grande en la transpuesta es: %d\n", largestline2);
 
-    
-
-    printf("El tamaño de la secuencia de 1s más grande es: %d\n", largestLine);
+    freeMatrix(matrix, size) ;
+    freeMatrix(transpuesta, size) ;
 
     return 0;
 }
