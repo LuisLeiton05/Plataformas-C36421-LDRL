@@ -15,7 +15,6 @@ void findlargestLine (int **matrix, int size, int *result) {
                     contador_max = contador ;// Vamor actualizando cada vez que sea 0.
                 }
 
-                // Necesitamos reiniciar el contador para la siguiente iteracion.
                 contador = 0 ;
                 }
 
@@ -33,7 +32,7 @@ void findlargestLine (int **matrix, int size, int *result) {
 // Reserva, en memoria dinámica, el espacio para nuestra matriz.
 void allocateMatrix (int ***matrix, int size) {
     // (int **) es para reservar memoria a un arreglo de punteros, varios de ellos.
-    *matrix = (int **)malloc(size * sizeof(int)) ;
+    *matrix = (int **)malloc(size * sizeof(int *)) ;
     // Caso en el que no encontró espacio.
     if (*matrix == NULL) {
         printf("Error: No se pudo asignar la memoria para la matriz. \n") ;
@@ -88,11 +87,14 @@ void freeMatrix (int **matrix , int size ) {
 void transpuestaMatrix (int **matrix, int size, int *** transpuesta) {
     // Reservamos el espacio de esta nueva matriz.
     allocateMatrix(transpuesta, size) ;
-
+    if (*transpuesta == NULL) {
+        printf("Error al asignar memoria para la transpuesta.\n");
+        return;
+    }
     // Recorrerla y transponer a la anterior.
     for (int i = 0; i < size;  i++){
         for (int j = 0; j < size; j++){
-        *(*(transpuesta + j) + i) = *(*(matrix + i) + j) ;
+        *(*(*transpuesta + j) + i) = *(*(matrix + i) + j) ;
         }
     }
 }
@@ -114,13 +116,16 @@ int main() {
 
     // Lógica para la matriz transpuesta.
     int **transpuesta = NULL ;
+    transpuestaMatrix(matrix, size, &transpuesta) ;
     printf("La matriz transpuesta es: \n");
     printMatrix(transpuesta, size);
     findlargestLine(transpuesta, size, &largestline2);
     printf("El tamaño de la secuencia de 1s más grande en la transpuesta es: %d\n", largestline2);
 
-    freeMatrix(matrix, size) ;
+
+    // Liberamos la memoria.
     freeMatrix(transpuesta, size) ;
+    freeMatrix(matrix, size) ;
 
     return 0;
 }
