@@ -9,7 +9,7 @@ void inicializar_lista (struct DoubleList * lista) {
 }
 
 // Función para insertar nodo al inicio.
-void nodo_inicio (struct DoubleList * lista, int data) {
+void nodo_al_inicio (struct DoubleList * lista, int data) {
     struct Node * nuevo_nodo = (struct Node *)malloc(sizeof(struct Node));
     nuevo_nodo -> data = data ;
     nuevo_nodo -> previo = NULL ;
@@ -27,3 +27,19 @@ void nodo_inicio (struct DoubleList * lista, int data) {
 }
 
 // Función para insertar nodo al final.
+void nodo_al_final (struct DoubleList * lista, int data) {
+    struct Node * nuevo_nodo = (struct Node *)malloc(sizeof(struct Node));
+    nuevo_nodo -> data = data ;
+    nuevo_nodo -> previo = lista->final ;
+    nuevo_nodo -> siguiente = NULL;
+
+    // Revisamos si estamos insertando al final.
+    if (lista->final != NULL) {
+        lista->final->siguiente = nuevo_nodo;
+    }
+    else {
+        lista->inicio = nuevo_nodo ; // Por si está vacia, este sería también el inicial.
+    }
+
+    lista->final = nuevo_nodo ; 
+}
