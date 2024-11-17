@@ -43,3 +43,40 @@ void nodo_al_final (struct DoubleList * lista, int data) {
 
     lista->final = nuevo_nodo ; 
 }
+
+// Función para insertar nodo en posición específica.
+void nodo_en_cierta_posicion (struct DoubleList * lista, int indice, int data) {
+    if (indice == 0){
+        nodo_al_inicio(lista, data) ;
+    }
+
+    struct Node * actual = lista->inicio ;
+    int i = 0 ;
+ 
+    // Iteramos para encontrar la posicion.
+    while ( actual != NULL && i < indice - 1 ){
+        actual = actual->siguiente ;
+    }
+
+    // Revisemos que está en el rango.
+    if ( actual == NULL ) {
+        printf("La lista no contiene tantos elementos (fuera de rango). \n") ;
+    }
+
+    // Creamos el nodo nuevo.
+    struct Node * nuevo_nodo = (struct Node *)malloc(sizeof(struct Node));
+    nuevo_nodo -> data = data ;
+    nuevo_nodo -> previo = actual ;
+    nuevo_nodo -> siguiente = actual->siguiente;
+
+    // Revisamos si estamos insertando al final.
+    if (actual->siguiente != NULL) {
+        actual->siguiente->previo = nuevo_nodo;
+    }
+    else {
+        lista->final = nuevo_nodo ;
+    }
+
+    actual->siguiente = nuevo_nodo ; 
+
+}
