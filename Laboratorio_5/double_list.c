@@ -110,4 +110,17 @@ void eliminar_nodo ( struct DoubleList * lista, int data ) {
 }
 
 // Buscar un nodo a partir de su data.
+struct Node * buscar_nodo (struct DoubleList * lista, int data){
+    struct Node * actual = lista->inicio ;
+
+    while (actual != NULL){
+        if (actual->data == data) {
+            return actual;
+        }
+        actual = actual->siguiente;
+    }
+    return NULL ; 
+}
+
+// Recorrer la lista hacia adelante e imprimirla.
 
