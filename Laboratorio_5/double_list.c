@@ -80,3 +80,34 @@ void nodo_en_cierta_posicion (struct DoubleList * lista, int indice, int data) {
     actual->siguiente = nuevo_nodo ; 
 
 }
+
+// Función para eliminar un nodo basado en la data.
+void eliminar_nodo ( struct DoubleList * lista, int data ) {
+    struct Node * actual = lista->inicio;
+
+    while ( actual != NULL ) {
+        if ( actual -> data == data) {
+            if ( actual->previo != NULL) {
+                actual->previo->siguiente = actual->siguiente ;
+            } else {
+                lista->inicio = actual->siguiente ;
+            }
+
+             if (actual->siguiente != NULL) {
+                actual->siguiente->previo = actual->previo ;
+            } else {
+                lista->final = actual->previo ;
+            }
+
+            free(actual);
+            return;
+        }
+        actual= actual->siguiente ;
+    }
+
+    printf("No se encontro un elemento que coincida.\n");
+
+}
+
+// Buscar un nodo a partir de su data.
+
