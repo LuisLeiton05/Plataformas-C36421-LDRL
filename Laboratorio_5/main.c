@@ -19,6 +19,7 @@ int main() {
     imprimir_hacia_adelante(&lista);
     printf("La lista con el nuevo nodo es: \n") ;
     nodo_al_inicio(&lista, z) ;
+    imprimir_hacia_adelante (&lista) ;
 
     printf("\n");
 
@@ -28,16 +29,18 @@ int main() {
     imprimir_hacia_adelante(&lista) ;
     printf("La lista con el nuevo nodo al final es: \n") ;
     nodo_al_final (&lista, x) ;
+    imprimir_hacia_adelante(&lista) ;
 
     printf("\n");
 
     // Insertamos un nodo en una posición específica.
-    printf("Insertar un nodo en una posición específica. \n") ;
-    printf ("Será el 190 en la segunda posición: \n") ;
+    printf("Insertar un nodo en una posición específica: \n") ;
+    printf ("Será el 190 en la segunda posición. \n") ;
     printf("La lista actual es: \n") ;
     imprimir_hacia_adelante(&lista) ;
-    printf("La lista anadiendo un 190 en la segunda posición. \n");
+    printf("La lista anadiendo un 190 en la segunda posición: \n");
     nodo_en_cierta_posicion(&lista, 1, x) ;
+    imprimir_hacia_adelante(&lista) ;
 
     printf("\n");
 
@@ -47,42 +50,46 @@ int main() {
     imprimir_hacia_adelante(&lista) ;
     printf("La lista después de eliminar 25: \n") ;
     eliminar_nodo (&lista, y) ;
+    imprimir_hacia_adelante (&lista) ;
 
-
+    printf("\n");
 
     // Buscar un elemento a partir de su data.
-    printf("Buscar un elemento a partir de su data. \n") ;
+    printf("Buscar un elemento a partir de su data: \n") ;
     printf ("Buscamos primero el 15 y luego el 190. \n") ;
     printf("La lista actual es: \n") ;
     imprimir_hacia_adelante(&lista) ;
 
-    struct Node *primero = buscar_nodo(&lista, 15) ;
-    struct Node *segundo = buscar_nodo(&lista, x) ;
+    struct Node *num1 = buscar_nodo(&lista, 15) ;
+    struct Node *num2 = buscar_nodo(&lista, x) ;
 
-    if (primero != NULL) {
-        printf("Elemento encontrado: %d\n", primero->data) ;
+    if (num1 != NULL) {
+        printf("Elemento encontrado: %d\n", num1->data) ;
     } else {
-        printf("Elemento no encontrado.\n") ;
+        printf("Elemento no encontrado: 15.\n") ;
+    
     }
-
-    if (segundo != NULL) {
-        printf("Elemento encontrado: %d\n", segundo->data) ;
+    if (num2 != NULL) {
+        printf("Elemento encontrado: %d\n", num2->data) ;
     } else {
-        printf("Elemento no encontrado.\n");
+        printf("Elemento no encontrado: 190 \n");
     }
 
     printf("\n");
 
     // Recorrer hacia adelante  la lista e imprimirla.
-    printf("Recorrer hacia adelante la lista e imprimirla. \n") ;
+    printf("Recorrer hacia adelante la lista e imprimirla: \n") ;
     imprimir_hacia_adelante (&lista) ;
 
     printf("\n");
 
     // Recorrerla hacia atrás la lista e imprimirla.
-    printf("Recorrerla hacia atrás la lista e imprimirla. \n") ;
-    imrpimir_hacia_atrás(&lista) ;
+    printf("Recorrerla hacia atrás la lista e imprimirla: \n") ;
+    imprimir_hacia_atras(&lista) ;
 
+
+    // Liberamos la memoria recorriendo la lista.
+    liberar (&lista) ;
 
     return 0 ;
 }
