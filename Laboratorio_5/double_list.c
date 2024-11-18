@@ -134,7 +134,7 @@ void imprimir_hacia_adelante ( struct DoubleList * lista) {
 }
 
 // Recorrer la lista hacia atrás e imprimirla.
-void imprimir_hacia_atrás ( struct DoubleList * lista) {
+void imprimir_hacia_atras ( struct DoubleList * lista) {
     struct Node * actual = lista->final;
 
     // Recorremos e imprimimos.
@@ -142,4 +142,20 @@ void imprimir_hacia_atrás ( struct DoubleList * lista) {
         printf("%d \n", actual->data) ;
         actual = actual->previo ; 
     }
+
+
+}
+
+// Liberar memoria.
+void liberar (struct DoubleList * lista) {
+    struct Node* actual = lista->inicio;
+    while (actual != NULL) {
+        struct Node* siguiente = actual->siguiente; 
+        free(actual);                   
+        actual = siguiente;                  
+    }
+
+    // Los apuntamos a NULL:
+    lista->inicio = NULL;
+    lista->final = NULL;
 }
