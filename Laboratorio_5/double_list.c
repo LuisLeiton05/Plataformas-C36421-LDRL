@@ -123,7 +123,7 @@ struct Node * buscar_nodo (struct DoubleList * lista, int data){
 }
 
 // Recorrer la lista hacia adelante e imprimirla.
-void imprimir_hacia_adelante ( struct DoubleList * lista, int data ) {
+void imprimir_hacia_adelante ( struct DoubleList * lista) {
     struct Node * actual = lista->inicio;
 
     // Recorremos e imprimimos.
@@ -134,7 +134,7 @@ void imprimir_hacia_adelante ( struct DoubleList * lista, int data ) {
 }
 
 // Recorrer la lista hacia atrás e imprimirla.
-void imprimir_hacia_atrás ( struct DoubleList * lista, int data ) {
+void imprimir_hacia_atrás ( struct DoubleList * lista) {
     struct Node * actual = lista->final;
 
     // Recorremos e imprimimos.
