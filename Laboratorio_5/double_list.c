@@ -123,4 +123,14 @@ struct Node * buscar_nodo (struct DoubleList * lista, int data){
 }
 
 // Recorrer la lista hacia adelante e imprimirla.
+void imprimir_hacia_adelante ( struct DoubleList * lista, int data ) {
+    struct Node * actual = lista->inicio;
 
+    // Recorremos e imprimimos.
+    while ( actual != NULL ) {
+        printf("%d \n", actual->data) ;
+        actual = actual->siguiente ; 
+    }
+}
+
+// Recorrer la lista hacia atrás e imprimirla.
