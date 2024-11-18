@@ -1,7 +1,7 @@
 CC = gcc
 CFLAGS = -Wall
 EXEC = main
-SRCS = main.c double_list.CC
+SRCS = main.c double_list.c
 
 all: $(EXEC)
 $(EXEC): $(SRCS)
