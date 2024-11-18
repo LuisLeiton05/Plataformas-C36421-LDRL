@@ -10,35 +10,21 @@ typedef struct Node {
 } ;
 
 typedef struct  DoubleList {
-    Node * inicio ;
-    Node * final ;
+    struct Node * inicio ;
+    struct Node * final ;
 
 } ;
 
 
 // Funciones:
-<<<<<<< HEAD
 void inicializar_lista (struct DoubleList * lista) ;
 void nodo_al_inicio (struct DoubleList * lista) ; 
 void nodo_al_final (struct DoubleList * lista, int data) ;
-void nodo_en_cierta_posicion (DoubleList *lita, int data) ;
+void nodo_en_cierta_posicion (struct DoubleList *lita, int indice,  int data) ;
 void eliminar_nodo (struct DoubleList * lista, int data) ;
 // Esta funcion necesitamos que devuelva un valor.
-Node* buscar_nodo (struct DoubleList lista, int data) ;
+struct Node* buscar_nodo (struct DoubleList lista, int data) ;
 void imprimir_hacia_adelante (struct DoubleList * lista, int data) ;
 void imrpimir_hacia_atrás (struct DoubleList * lista, int data) ;
-=======
-void inicializar_lista (DoubleList * lista) ;
-void nodo_al_inicio (DoubleList * lista, int data) ; 
-void nodo_al_final (DoubleList * lista, int data) ;
-void nodo_en_cierta_posicion (DoubleList *lita, int indice, int data) ;
-void eliminar_nodo (DoubleList * lista, int data) ;
-// Esta funcion necesitamos que devuelva un valor, por eso no es void.
-Node* buscar_nodo (DoubleList lista, int data) ;
-void imprimir_hacia_adelante (DoubleList * lista, int data) ;
-void imrpimir_hacia_atrás (DoubleList * lista, int data) ;
-
-
->>>>>>> feature/double_list.c
 
 #endif 
