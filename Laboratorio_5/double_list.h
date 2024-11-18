@@ -18,7 +18,7 @@ typedef struct  DoubleList {
 
 // Funciones:
 void inicializar_lista (struct DoubleList * lista) ;
-void nodo_al_inicio (struct DoubleList * lista) ; 
+void nodo_al_inicio (struct DoubleList * lista, int data) ; 
 void nodo_al_final (struct DoubleList * lista, int data) ;
 void nodo_en_cierta_posicion (struct DoubleList *lita, int indice,  int data) ;
 void eliminar_nodo (struct DoubleList * lista, int data) ;
