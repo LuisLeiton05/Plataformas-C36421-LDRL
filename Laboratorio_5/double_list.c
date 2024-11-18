@@ -134,3 +134,12 @@ void imprimir_hacia_adelante ( struct DoubleList * lista, int data ) {
 }
 
 // Recorrer la lista hacia atrás e imprimirla.
+void imprimir_hacia_atrás ( struct DoubleList * lista, int data ) {
+    struct Node * actual = lista->final;
+
+    // Recorremos e imprimimos.
+    while ( actual != NULL ) {
+        printf("%d \n", actual->data) ;
+        actual = actual->previo ; 
+    }
+}
