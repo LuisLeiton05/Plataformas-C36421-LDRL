@@ -3,9 +3,9 @@ CFLAGS = -Wall
 EXEC = main
 SRCS = main.c double_list.CC
 
-all: $(TARGET)
-$(TARGET): $(SRCS)
+all: $(EXEC)
+$(EXEC): $(SRCS)
 	$(CC) $(CFLAGS) -o $(EXEC) $(SRCS)
 
 clean:
-	rm -f $(TARGET)
+	rm -f $(EXEC)
