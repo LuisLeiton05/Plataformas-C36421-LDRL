@@ -7,13 +7,13 @@ typedef struct Node {
     int data ;
     struct Node * previo ;
     struct Node * siguiente ;
-} ;
+} Node ;
 
 typedef struct  DoubleList {
     struct Node * inicio ;
     struct Node * final ;
 
-} ;
+} DoubleList ;
 
 
 // Funciones:
@@ -25,6 +25,7 @@ void eliminar_nodo (struct DoubleList * lista, int data) ;
 // Esta funcion necesitamos que devuelva un valor.
 struct Node* buscar_nodo (struct DoubleList * lista, int data) ;
 void imprimir_hacia_adelante (struct DoubleList * lista) ;
-void imrpimir_hacia_atrás (struct DoubleList * lista) ;
+void imprimir_hacia_atras (struct DoubleList * lista) ;
+void liberar (struct DoubleList * lista) ;
 
 #endif 
