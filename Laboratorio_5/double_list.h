@@ -24,7 +24,7 @@ void nodo_en_cierta_posicion (struct DoubleList *lita, int indice,  int data) ;
 void eliminar_nodo (struct DoubleList * lista, int data) ;
 // Esta funcion necesitamos que devuelva un valor.
 struct Node* buscar_nodo (struct DoubleList lista, int data) ;
-void imprimir_hacia_adelante (struct DoubleList * lista, int data) ;
-void imrpimir_hacia_atrás (struct DoubleList * lista, int data) ;
+void imprimir_hacia_adelante (struct DoubleList * lista) ;
+void imrpimir_hacia_atrás (struct DoubleList * lista) ;
 
 #endif 
